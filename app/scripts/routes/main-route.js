@@ -2,16 +2,18 @@
 
 define([
     'jquery',
-    'backbone'
-], function ($, Backbone) {
+    'backbone',
+    'views/main-view'
+], function ($, Backbone,View) {
     'use strict';
-    console.log('route loaded')
 
     var MainRouteRouter = Backbone.Router.extend({
-        routes: {
-        }
+        routes: {}
 
     });
 
+    var view = new View({el:'#app'});
+    console.log($('#app'))
+    view.render();
     return MainRouteRouter;
 });
