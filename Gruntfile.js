@@ -172,8 +172,9 @@ module.exports = function (grunt) {
             dist: {
                 files: {
                     '<%= yeoman.dist %>/styles/main.css': [
-                        '.tmp/styles/{,*/}*.css',
-                        '<%= yeoman.app %>/styles/{,*/}*.css'
+                        '<%= yeoman.app %>/bower_components/bootstrap/dist/css/bootstrap.css',
+                        '<%= yeoman.app %>/bower_components/fontawesome/css/font-awesome.css',
+                        '<%= yeoman.app %>/styles/main.css'
                     ]
                 }
             }
@@ -275,8 +276,8 @@ module.exports = function (grunt) {
             },
             requirejs: {
                 files: {
-                    '<%= yeoman.dist %>/scripts/libs/bower/requirejs/require.js': [
-                        '<%= yeoman.dist %>/scripts/libs/bower/requirejs/require.js'
+                    '<%= yeoman.dist %>/bower_components/requirejs/require.js': [
+                        '<%= yeoman.dist %>/bower_components/requirejs/require.js'
                     ]
                 }
             }
