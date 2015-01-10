@@ -6,6 +6,7 @@
 @viewport {
     width: device-width;
 }
+
 #outer-wrap {
     position: relative;
     overflow: hidden;
@@ -39,8 +40,31 @@ header .btn {
     margin: 1em 0;
 }
 
+#content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+#content .week-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.week .day,.week .stat {
+    border: 1px solid gray;
+}
+.week .day .btn{
+    position:absolute;
+    bottom:1em;
+    right:1em;
+}
+.week :first-child {
+}
+
 @media screen and (min-width: 45.0625em) {
-    .open-btn {
+    .open-btn, .close-btn {
         display: none;
     }
 
@@ -127,3 +151,34 @@ header .btn {
     }
 }
 
+@media screen and (orientation: portrait) {
+    .week {
+        flex:1;
+        display:flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+    }
+    .week > *{
+        width:50%;
+        overflow:hidden;
+        position:relative;
+
+    }
+}
+
+@media screen and (orientation: landscape) {
+    .week {
+        flex:1;
+        display:flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+    }
+    .week > *{
+        width:25%;
+        overflow:hidden;
+        position:relative;
+
+    }
+}

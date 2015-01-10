@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="67e76700-ca51-43b3-999e-cb9ea1e1825b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/scripts/templates/main.mustache" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/scripts/text.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/routes/main-route.js" afterPath="$PROJECT_DIR$/app/scripts/routes/main-route.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/styles/main.css" afterPath="$PROJECT_DIR$/app/styles/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/templates/main.mustache" afterPath="$PROJECT_DIR$/app/scripts/templates/main.mustache" />
     </list>
     <ignored path="agendis-mobile.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -57,9 +53,11 @@
               <file leaf-file-name="main.mustache" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/app/scripts/templates/main.mustache">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="0.16585366" vertical-offset="0" max-vertical-offset="1105">
-                      <caret line="6" column="31" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="31" />
-                      <folding />
+                    <state vertical-scroll-proportion="0.58536583" vertical-offset="779" max-vertical-offset="1394">
+                      <caret line="67" column="12" selection-start-line="67" selection-start-column="12" selection-end-line="67" selection-end-column="12" />
+                      <folding>
+                        <element signature="n#style#0;n#div#0;n#div#0;n#div#7;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                      </folding>
                     </state>
                   </provider>
                 </entry>
@@ -83,7 +81,7 @@
               <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/app/index.html">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="0.7906137" vertical-offset="308" max-vertical-offset="765">
+                    <state vertical-scroll-proportion="0.8267148" vertical-offset="298" max-vertical-offset="765">
                       <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
                       <folding />
                     </state>
@@ -121,8 +119,8 @@
           <file leaf-file-name="main.css" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/styles/main.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.13152805" vertical-offset="0" max-vertical-offset="2295">
-                  <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.3752418" vertical-offset="2196" max-vertical-offset="3230">
+                  <caret line="152" column="0" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -148,8 +146,8 @@
         <option value="$PROJECT_DIR$/app/scripts/routes/main-route.js" />
         <option value="$PROJECT_DIR$/app/index.html" />
         <option value="$PROJECT_DIR$/app/scripts/views/main-view.js" />
-        <option value="$PROJECT_DIR$/app/scripts/templates/main.mustache" />
         <option value="$PROJECT_DIR$/app/styles/main.css" />
+        <option value="$PROJECT_DIR$/app/scripts/templates/main.mustache" />
       </list>
     </option>
   </component>
@@ -743,19 +741,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/templates/main.mustache">
+    <entry file="file://$PROJECT_DIR$/app/styles/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16585366" vertical-offset="0" max-vertical-offset="1105">
-          <caret line="6" column="31" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.3752418" vertical-offset="2196" max-vertical-offset="3230">
+          <caret line="152" column="0" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/styles/main.css">
+    <entry file="file://$PROJECT_DIR$/app/scripts/templates/main.mustache">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13152805" vertical-offset="0" max-vertical-offset="2295">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.58536583" vertical-offset="779" max-vertical-offset="1394">
+          <caret line="67" column="12" selection-start-line="67" selection-start-column="12" selection-end-line="67" selection-end-column="12" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#7;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

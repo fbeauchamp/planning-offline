@@ -1,54 +1,71 @@
 <div id="outer-wrap">
     <div id="inner-wrap">
 
-        <header  role="banner">
-            <a class="open-btn btn btn-default pull-left" id="nav-open-btn" href="#nav"><i class="fa fa-navicon"></i></a>
+        <header role="banner">
+            <a class="open-btn btn btn-default pull-left" id="nav-open-btn" href="#nav"><i
+                    class="fa fa-navicon"></i></a>
 
-                <h1 class="block-title">
+            <h1 class="block-title">
 
-                    Book Title</h1>
+                Self service </h1>
         </header>
         <ul class="nav nav-pills">
-            <li role="presentation" class="active"><a href="#">Home</a></li>
-            <li role="presentation"><a href="#">Profile</a></li>
-            <li role="presentation"><a href="#">Messages</a></li>
+            <li role="presentation" class="active"><a href="#">Mon planing</a></li>
+            <li role="presentation"><a href="#">Synchronization</a></li>
+            <li role="presentation"><a href="#">Options</a></li>
         </ul>
         <a class="btn btn-default close-btn" id="nav-close-btn" href="#top"><i class="fa fa-close"></i></a>
 
-        <!--
-
-        <nav id="nav" role="navigation">
-            <div class="block">
-                <h2 class="block-title">Chapters</h2>
-                <ul>
-                    <li class="is-active">
-                        <a href="#">Un sous menu</a>
-                    </li> <li>
-                    <a href="#">Un autre</a>
-                </li> <li>
-                    <a href="#">Un troisième</a>
-                </li>
-                </ul>
-                <a class="btn btn-default close-btn" id="nav-close-btn" href="#top"><i class="fa fa-close"></i></a>
-            </div>
-        </nav>
--->
         <div id="content" role="main">
-           <h2>Semaine 42</h2>
-            <div class="week">
-                <div class="day">Lundi</div>
-                <div class="day">Mardi</div>
-                <div class="day">Mercredi</div>
-                <div class="day">Jeudi</div>
-                <div class="day">Vendredi</div>
-                <div class="day">Samedi</div>
-                <div class="day">Dimanche</div>
-                <div class="day">Cumuls</div>
+            <div class="week-container">
+                <h2>Semaine 42</h2>
+
+                <div class="week">
+                    <div class="day"><h3>Lundi</h3>
+
+                        <p class="bg-primary">Garde</p>
+
+                        <p class="bg-warning">Contrainte faible</p>
+
+                        <p class="bg-danger">Contrainte forte</p>
+                        <a class="btn btn-primary"><i class="fa fa-plus-square"></i></a>
+                    </div>
+                    <div class="day"><h3>Mardi</h3>
+                        <a class="btn btn-primary"><i class="fa fa-plus-square"></i></a>
+
+                    </div>
+                    <div class="day"><h3>Mercredi</h3>
+                        <a class="btn btn-primary"><i class="fa fa-plus-square"></i></a>
+
+                    </div>
+                    <div class="day"><h3>Jeudi</h3>
+                        <a class="btn btn-primary"><i
+                            class="fa fa-plus-square"></i></a>
+
+                    </div>
+                    <div class="day"><h3>Vendredi</h3>
+                        <a class="btn btn-primary"><i class="fa fa-plus-square"></i></a>
+
+                    </div>
+                    <div class="day"><h3>Samedi</h3>
+                        <a class="btn btn-primary"><i class="fa fa-plus-square"></i></a>
+                    </div>
+                    <div class="day"><h3>Dimanche</h3>
+                        <a class="btn btn-primary"><i class="fa fa-plus-square"></i></a>
+                    </div>
+                    <div class="stat"><h3>Cumuls</h3>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                                1022H
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
         <footer role="contentinfo">
-
+            
         </footer>
 
     </div>
