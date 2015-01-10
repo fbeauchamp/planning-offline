@@ -37,3 +37,8 @@ La prochaine fois que vous lancerez l'applicaiton en cliquant sur ce raccourcis 
 * une synchronisation sans que l'application ne soit ouverte
 
 Les serviceworker devraient permettrent de résoudre ces problématiques, mais ne seront vraisemblablement pas répondus avant 6 à 12 mois.
+
+## A quoi ça ressemble ? 
+![capture 1](https://github.com/fbeauchamp/planning-offline/raw/master/doc/screenshot1.png)
+![capture 2](https://github.com/fbeauchamp/planning-offline/raw/master/doc/screenshot2.png)
+![capture 3](https://github.com/fbeauchamp/planning-offline/raw/master/doc/screenshot3.png)
