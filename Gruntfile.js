@@ -60,7 +60,7 @@ module.exports = function (grunt) {
             options: {
                 port: grunt.option('port') || SERVER_PORT,
                 // change this to '0.0.0.0' to access the server from outside
-                hostname: 'localhost'
+                hostname: '0.0.0.0'
             },
             livereload: {
                 options: {
@@ -305,13 +305,12 @@ module.exports = function (grunt) {
                 },
                 src: [
                     '*.{ico,txt,png,json,html}',
-                    //"*.ico",
                     "scripts/main.js",
                     "scripts/vendor/modernizr.js",
                     "bower_components/requirejs/require.js",
                     "styles/main.css",
                  //   "images/*.png",
-                 //   'fonts/*.woff'
+                    'fonts/*.woff'
                 ],
                 dest: "<%= yeoman.dist %>/manifest.appcache"
             }

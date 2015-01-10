@@ -7,6 +7,15 @@
     width: device-width;
 }
 
+/*font awesome use font.woff?version . chrome won't cache it */
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('../fonts/fontawesome-webfont.eot');
+    src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.1.0') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff') format('woff'), url('../fonts/fontawesome-webfont.ttf') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.1.0#fontawesomeregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 #outer-wrap {
     position: relative;
     overflow: hidden;
