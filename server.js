@@ -6,9 +6,12 @@ var ext = function (file_name) {
     return ppos > 0 ? file_name.substr(ppos + 1) : null;
 }
 http.createServer(function (request, response) {
-    console.log(request.url);
+    var url = request.url.substr(1);
+    url = url ? url : 'index.html';
+    console.log(url);
+
     var mime = "text/plain";
-    switch (ext) {
+    switch (ext(url)) {
         case 'js':
             mime = "application/javascript";
             break;
@@ -37,5 +40,5 @@ http.createServer(function (request, response) {
 
     }
     response.writeHead(200, {"Content-Type": mime});
-    response.end(fs.readFileSync('./dist/'+request.url));
+    response.end(fs.readFileSync('./dist/'+url));
 }).listen(9000);
