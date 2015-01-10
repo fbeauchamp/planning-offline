@@ -40,6 +40,11 @@ header .btn {
     margin: 1em 0;
 }
 
+footer{
+    height:3em;
+    color: #fff;
+    background: #333333;
+}
 #content {
     flex: 1;
     display: flex;
@@ -55,7 +60,7 @@ header .btn {
 .week .day,.week .stat {
     border: 1px solid gray;
 }
-.week .day .btn{
+.week .day .add{
     position:absolute;
     bottom:1em;
     right:1em;

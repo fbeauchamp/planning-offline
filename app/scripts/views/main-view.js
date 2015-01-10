@@ -9,40 +9,24 @@ define([
 
 ], function ($, _, Backbone, Mustache, template) {
     'use strict';
-// helper functions
 
-    var trim = function (str) {
-        return str.trim ? str.trim() : str.replace(/^\s+|\s+$/g, '');
+    Date.prototype.getWeekNumber = function(){
+        var d = new Date(+this);
+        d.setHours(0,0,0);
+        d.setDate(d.getDate()+4-(d.getDay()||7));
+        return Math.ceil((((d-new Date(d.getFullYear(),0,1))/8.64e7)+1)/7);
     };
+    Date.prototype.getMonday = function(){
+            var d = new Date(+this);
+            var day = d.getDay(),
+                diff = d.getDate() - day + (day == 0 ? -6:1); // adjust when day is sunday
+            return new Date(d.setDate(diff));
 
-    var hasClass = function (el, cn) {
-        return (' ' + el.className + ' ').indexOf(' ' + cn + ' ') !== -1;
     };
+    var days=['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'],
+        months =['Janvier','Février' ,'Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Décembre'];
 
-    var addClass = function (el, cn) {
-        if (!hasClass(el, cn)) {
-            el.className = (el.className === '') ? cn : el.className + ' ' + cn;
-        }
-    };
 
-    var removeClass = function (el, cn) {
-        el.className = trim((' ' + el.className + ' ').replace(' ' + cn + ' ', ' '));
-    };
-
-    var hasParent = function (el, id) {
-        if (el) {
-            do {
-                if (el.id === id) {
-                    return true;
-                }
-                if (el.nodeType === 9) {
-                    break;
-                }
-            }
-            while ((el = el.parentNode));
-        }
-        return false;
-    };
     var transform_prop = window.Modernizr.prefixed('transform'),
         transition_prop = window.Modernizr.prefixed('transition'),
         transition_end = (function () {
@@ -55,6 +39,7 @@ define([
             };
             return props.hasOwnProperty(transition_prop) ? props[transition_prop] : false;
         })();
+
 
     var MainViewView = Backbone.View.extend({
         template: template,
@@ -72,7 +57,41 @@ define([
                     e.preventDefault();
                     this.closeNav();
                 }
+            },
+            'click .day .add': function(e){
+                console.log(' open modal ')
+                var $target = $(e.target);
+                if(!$target.hasClass('btn')){
+                    $target = $($target.parent());
+                }
+                var date = new Date($target.data('date')),
+                    readable_date = days[ (date.getDay()+6)%7];
+                this.selected_date = date;
+
+                readable_date+=' '+date.getDate();
+                readable_date+=' '+months[date.getMonth()];
+                readable_date+=' '+ date.getFullYear();
+                this.$('.date-container').text(readable_date);
+                console.log($target.data('date'))
+
+            },
+            'click #modal-add-constraint .btn-primary': function(e){
+                console.log(' add  constraint')
+                var constraints;
+                try{
+                    constraints = JSON.parse(localStorage.getItem('constraints')) || [];
+                }catch (e){
+                    constraints =[];
+                }
+                constraints.push({
+                    label:this.$('#modal-add-constraint input[name=label]').val(),
+                    level:this.$('#modal-add-constraint select[name=level]').val(),
+                    date:this.selected_date
+                });
+                localStorage.setItem('constraints',JSON.stringify(constraints));
+                this.render();
             }
+
         },
         toggleNav: function (e) {
             console.log('toggle nav')
@@ -87,12 +106,10 @@ define([
             }
         },
         openNav: function () {
-            console.log('open  nav');
 
             if (this.nav_open) {
                 return;
             }
-            console.log('add class')
             this.$el.addClass('js-nav')
             this.nav_open = true;
         },
@@ -102,7 +119,6 @@ define([
 
             if (this.nav_open) {
                 // close navigation after transition or immediately
-                console.log(this.$('#inner-wrap').css(transition_prop + 'Duration'))
                 var duration = (transition_end && transition_prop) ? parseFloat(this.$('#inner-wrap').css(transition_prop + 'Duration')): 0;
                 if (duration > 0) {
 
@@ -117,7 +133,6 @@ define([
 
         },
         closeNavEnd: function (e) {
-            console.log('close nave end')
             if (e && e.target === this.el.getElementById('inner-wrap')) {
                 this.el.removeEventListener(transition_end)
             }
@@ -129,102 +144,42 @@ define([
         },
 
         render: function () {
-            this.$el.html(Mustache.render(this.template));
+            var json  ={};
+            var constraints
+            try{
+                constraints = JSON.parse(localStorage.getItem('constraints')) ||[];
+            }catch (e){
+                constraints =[];
+            }
+            constraints = _.map(constraints, function(constraint){
+                constraint.date = new Date(constraint.date);
+                return constraint;
+            })
+            json.week_number = new Date().getWeekNumber();
+            json.week = []
+            var  monday = new Date().getMonday();
+            for( var i = 0 ; i < 7 ; i ++){
+                var d = new Date(+monday + i*24*60*60*1000),
+                    start = new Date(+d).setHours(0,0,0),
+                    end = new Date(+d).setHours(23,59,59);
+                console.log( d.getMonth())
+                json.week.push({
+                    label : days[i],
+                    date:d,
+                    dayofmonth: d.getDate(),
+                    month: d.getMonth(),
+                    monthlabel:months[ d.getMonth()],
+                    year: d.getFullYear(),
+                    constraints: _.filter(constraints, function(constraint){
+                         return constraint.date >= start && constraint.date <= end
+                    })
+                })
+            }
+            console.log(json.week)
+            this.$el.html(Mustache.render(this.template,json));
             this.$el.addClass('js-ready')
-            /*!
-             *
-             *  Copyright (c) David Bushell | http://dbushell.com/
-             *
-             */
 
 
-            // normalize vendor prefixes
-
-            var doc = document.documentElement;
-
-
-            var _init = false, app = {};
-/*
-            var inner = document.getElementById('inner-wrap'),
-
-                nav_open = false,
-
-                nav_class = 'js-nav';
-
-
-            app.init = function () {
-                console.log('init')
-                if (_init) {
-                    return;
-                }
-                _init = true;
-
-                var closeNavEnd = function (e) {
-                    console.log('close nave end')
-                    if (e && e.target === inner) {
-                        document.removeEventListener(transition_end, closeNavEnd, false);
-                    }
-                    nav_open = false;
-                };
-
-                app.closeNav = function () {
-                    console.log('close nave ')
-
-                    if (nav_open) {
-                        // close navigation after transition or immediately
-                        var duration = (transition_end && transition_prop) ? parseFloat(window.getComputedStyle(inner, '')[transition_prop + 'Duration']) : 0;
-                        if (duration > 0) {
-                            document.addEventListener(transition_end, closeNavEnd, false);
-                        } else {
-                            closeNavEnd(null);
-                        }
-                    }
-                    removeClass(doc, nav_class);
-                };
-
-                app.openNav = function () {
-                    console.log('open  nav');
-
-                    if (nav_open) {
-                        return;
-                    }
-                    addClass(doc, nav_class);
-                    nav_open = true;
-                };
-
-                app.toggleNav = function (e) {
-                    console.log('toggle nav')
-
-                    if (nav_open && hasClass(doc, nav_class)) {
-                        app.closeNav();
-                    } else {
-                        app.openNav();
-                    }
-                    if (e) {
-                        e.preventDefault();
-                    }
-                };
-
-                // open nav with main "nav" button
-                document.getElementById('nav-open-btn').addEventListener('click', app.toggleNav, false);
-
-                // close nav with main "close" button
-                document.getElementById('nav-close-btn').addEventListener('click', app.toggleNav, false);
-
-                // close nav by touching the partial off-screen content
-                document.addEventListener('click', function (e) {
-                        if (nav_open && !hasParent(e.target, 'nav')) {
-                            e.preventDefault();
-                            app.closeNav();
-                        }
-                    },
-                    true);
-
-                addClass(doc, 'js-ready');
-
-            };
-            app.init();
-*/
         }
     });
 
